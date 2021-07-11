@@ -1,6 +1,6 @@
 import React from 'react'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-import { Box, makeStyles } from '@material-ui/core'
+import { Box, IconButton, makeStyles } from '@material-ui/core'
 import styled from 'styled-components'
 
 const useStyles = makeStyles({
@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     color: 'white',
   },
   btn: {
-    borderRadius: 'none',
+    // borderRadius: 'none',
     padding: 10,
     color: 'white',
     fontSize: 55,
@@ -17,8 +17,8 @@ const useStyles = makeStyles({
     borderStartEndRadius: 10,
     borderBottomRightRadius: 10,
     height: 50,
-    paddingLeft: 18,
-    paddingRight: 18,
+    // paddingLeft: 18,
+    paddingRight: 'none',
     cursor: 'pointer',
   },
 })
@@ -33,6 +33,7 @@ const Search = ({ value, setInput, submitHandler }) => {
           display='flex'
           justifyItems='center'
           width={{ xs: 270, sm: 340, md: 400 }}
+          alignItems='center'
         >
           <StyledInput
             type='text'
@@ -40,8 +41,9 @@ const Search = ({ value, setInput, submitHandler }) => {
             value={value}
             onChange={(e) => setInput(e.target.value)}
           />
-
-          <ArrowForwardIosIcon className={classes.btn} />
+          <IconButton style={{ paddingLeft: 0 }} type='submit'>
+            <ArrowForwardIosIcon type='submit' className={classes.btn} />
+          </IconButton>
           <input type='submit' style={{ display: 'none' }} />
         </Box>
       </form>
