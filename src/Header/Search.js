@@ -2,9 +2,6 @@ import React from 'react'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { Box, makeStyles } from '@material-ui/core'
 import styled from 'styled-components'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { IpdataAction } from '../action'
 
 const useStyles = makeStyles({
   icon: {
@@ -26,25 +23,12 @@ const useStyles = makeStyles({
   },
 })
 
-const Search = () => {
+const Search = ({ value, setInput, submitHandler }) => {
   const classes = useStyles()
-
-  const [input, setInput] = useState('')
-
-  const dispatch = useDispatch()
-
-  const onChangeHandler = (e) => {
-    setInput(e.target.value)
-  }
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault()
-    dispatch(IpdataAction(input))
-  }
 
   return (
     <Box display='flex' justifyContent='center'>
-      <form onSubmit={onSubmitHandler}>
+      <form onSubmit={(e) => submitHandler(e)}>
         <Box
           display='flex'
           justifyItems='center'
@@ -53,8 +37,8 @@ const Search = () => {
           <StyledInput
             type='text'
             placeholder='Search for any IP address or domain'
-            value={input}
-            onChange={onChangeHandler}
+            value={value}
+            onChange={(e) => setInput(e.target.value)}
           />
 
           <ArrowForwardIosIcon className={classes.btn} />

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Result from '../Result/Result'
 import Search from './Search'
 
-const Header = ({ value, onChange, apiData }) => {
+const Header = ({ value, setInput, submitHandler, result }) => {
   // Api-key: at_EIPg4Itm2P17YDXxPUEMOEgIUbjlU
 
   return (
@@ -13,8 +13,12 @@ const Header = ({ value, onChange, apiData }) => {
         <Typography variant='h4'>IP Address Tracker</Typography>
       </Box>
       <Box pt={4} pb={7}>
-        <Search inputHandler={onChange} value={value} apiHandler={apiData} />
-        <Result />
+        <Search
+          value={value}
+          setInput={setInput}
+          submitHandler={submitHandler}
+        />
+        <Result data={result} />
       </Box>
     </Container>
   )

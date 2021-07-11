@@ -7,12 +7,8 @@ import {
   Typography,
 } from '@material-ui/core'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-const Result = () => {
-  const dataList = useSelector((state) => state.dataList)
-  const { data } = dataList
-
+const Result = ({ data }) => {
   return (
     <Box mt={4} zIndex={3}>
       <Container maxWidth='md'>
@@ -46,7 +42,7 @@ const Result = () => {
                 >
                   <Typography variant='subtitle1'>LOCATION</Typography>
                   <Typography variant='h5'>
-                    {!data.location?.region ? 'sindh' : data.location?.region}
+                    {!data?.region ? 'sindh' : data.region}
                   </Typography>
                 </Box>
               </Grid>
@@ -59,9 +55,7 @@ const Result = () => {
                 >
                   <Typography variant='subtitle1'>TIMEZONE</Typography>
                   <Typography variant='h5'>
-                    {!data.location?.timezone
-                      ? '+05:00'
-                      : data.location?.timezone}
+                    {!data?.timezone ? '+05:00' : data.timezone}
                   </Typography>
                 </Box>
               </Grid>
